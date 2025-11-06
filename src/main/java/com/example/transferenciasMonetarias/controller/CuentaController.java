@@ -17,11 +17,7 @@ public class CuentaController {
 
     @GetMapping
     public Flux<Cuenta> listar() {
-        return cuentaService.listar()
-                .doOnSubscribe(s -> System.out.println("🔍 Iniciando consulta de cuentas"))
-                .doOnNext(cuenta -> System.out.println("✅ Cuenta encontrada: " + cuenta))
-                .doOnComplete(() -> System.out.println("✅ Consulta completada"))
-                .doOnError(error -> System.err.println("❌ Error: " + error.getMessage()));
+        return cuentaService.listar();
     }
 
     @GetMapping("/{id}")
